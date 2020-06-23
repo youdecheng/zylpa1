@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zylpa.web.mapper.AppointmentOrderMapper">
+
+    <resultMap type="com.zylpa.web.domain.AppointmentOrder" id="AppointmentOrderResult">
+        <result property="fId"    column="FId"    />
+        <result property="fOrderNum"    column="FOrderNum"    />
+        <result property="fProductId"    column="FProductId"    />
+        <result property="fProName"    column="FProName"    />
+        <result property="fProMark"    column="FProMark"    />
+        <result property="fManufacturer"    column="FManufacturer"    />
+        <result property="fPrice"    column="FPrice"    />
+        <result property="fQuantity"    column="FQuantity"    />
+        <result property="fCreator"    column="fCreator"    />
+        <result property="fBond"    column="fBond"    />
+        <result property="fAppointmentStatus"    column="FAppointmentStatus"    />
+        <result property="fTime"    column="FTime"    />
+        <result property="fStatus"    column="FStatus"    />
+        <result property="fUpdateTime"    column="FUpdateTime"    />
+        <result property="fIsDelete"    column="FIsDelete"    />
+        <result property="fEnterpriseName"    column="FName"    />
+        <result property="fPhone"    column="FPhone"    />
+        <result property="fAuditStatus"    column="FAuditStatus"    />
+        <result property="fDeliveryFTime"    column="FDeliveryFTime"    />
+        <result property="fSaleOrderId"    column="FSaleOrderId"    />
+
+
+    </resultMap>
+
+    <sql id="selectAppointmentOrderVo2">
+        SELECT
+	a.FId,
+	a.FOrderNum,
+	a.FProductId,
+	a.FProName,
+	a.FProMark,
+	a.FManufacturer,
+	a.FPrice,
+	a.FQuantity,
+	a.FCreator,
+	a.FBond,
+	a.FAppointmentStatus,
+	a.FTime,
+	a.FStatus,
+	a.FUpdateTime,
+	a.FIsDelete,
+	a.FAuditStatus,
+	a.FDeliveryFTime,
+	a.FSaleOrderId,
+FROM
+	appointment_order a
+
+    </sql>
+
+	<sql id="selectAppointmentOrderVo1">
+        select FId, FOrderNum, FProductId, FProName, FProMark, FManufacturer, FPrice, FQuantity, FCreator,FBond,FAppointmentStatus,FAuditStatus, FTime, FStatus, FUpdateTime, FIsDelete,FDeliveryFTime,FSaleOrderId from appointment_order
+
+    </sql>
+    <sql id="selectAppointmentOrderVo">
+        SELECT
+	a.FId,
+	a.FOrderNum,
+	a.FProductId,
+	a.FProName,
+	a.FProMark,
+	a.FManufacturer,
+	a.FPrice,
+	a.FQuantity,
+	a.FCreator,
+	a.FBond,
+	a.FAppointmentStatus,
+	a.FTime,
+	a.FStatus,
+	a.FUpdateTime,
+	a.FIsDelete,
+	a.FAuditStatus,
+	a.FDeliveryFTime,
+	a.FSaleOrderId
+	FROM
+	appointment_order a
+
+
+    </sql>
+	
+    <select id="selectAppointmentOrderList" parameterType="AppointmentOrder" resultMap="AppointmentOrderResult">
+        <include refid="selectAppointmentOrderVo"/>
+        <where>  
+            <if test="fId != null  and fId != '' "> and a.FId = #{fId}</if>
+             <if test="fOrderNum != null  and fOrderNum != '' "> and a.FOrderNum = #{fOrderNum}</if>
+             <if test="fProductId != null  and fProductId != '' "> and a.FProductId = #{fProductId}</if>
+             <if test="fProName != null  and fProName != '' "> and a.FProName = #{fProName}</if>
+             <if test="fProMark != null  and fProMark != '' "> and a.FProMark = #{fProMark}</if>
+             <if test="fManufacturer != null  and fManufacturer != '' "> and a.FManufacturer = #{fManufacturer}</if>
+             <if test="fPrice != null "> and a.FPrice = #{fPrice}</if>
+             <if test="fQuantity != null "> and FQuantity = #{fQuantity}</if>
+             <if test="fAppointmentStatus != null  and fAppointmentStatus != '' "> and a.FAppointmentStatus = #{fAppointmentStatus}</if>
+             <if test="fTime != null "> and a.FTime = #{fTime}</if>
+             <if test="fCreator != null "> and a.FCreator = #{fCreator}</if>
+             <if test="fBond != null "> and a.FBond = #{fBond}</if>
+             <if test="fStatus != null  and fStatus != '' "> and  a.FStatus = #{fStatus}</if>
+             <if test="fUpdateTime != null "> and a.FUpdateTime = #{fUpdateTime}</if>
+             <if test="fAuditStatus != null "> and a.FAuditStatus = #{fAuditStatus}</if>
+             <if test="fIsDelete != null  and fIsDelete != '' "> and a.FIsDelete = #{fIsDelete}</if>
+            <if test="fEnterpriseName != null  and fEnterpriseName != '' "> and e.FName = #{fEnterpriseName}</if>
+            <if test="fDeliveryFTime != null  and fDeliveryFTime != '' "> and a.FDeliveryFTime= #{fDeliveryFTime}</if>
+            <if test="fSaleOrderId != null  and fSaleOrderId != '' "> and a.FSaleOrderId= #{fSaleOrderId}</if>
+         </where>
+        order by a.fTime desc
+    </select>
+
+    <select id="selectAappointmentStayPayList" parameterType="AppointmentOrder" resultMap="AppointmentOrderResult">
+     SELECT
+	a.FId,
+	a.FOrderNum,
+	a.FProductId,
+	a.FProName,
+	a.FProMark,
+	a.FManufacturer,
+	a.FPrice,
+	a.FQuantity,
+	a.FCreator,
+	a.FBond,
+	a.FAppointmentStatus,
+	a.FTime,
+	a.FStatus,
+	a.FUpdateTime,
+	a.FIsDelete,
+	a.FAuditStatus,
+	a.FDeliveryFTime,
+	a.FSaleOrderId,
+	S.FStatus
+FROM
+	appointment_order a
+LEFT JOIN sale_order S ON S.FId = a.FSaleOrderId
+WHERE
+	(
+		S.FStatus IN ('0', '1', '2')
+		AND a.FSaleOrderId IS NOT NULL
+	)
+OR (a.FAppointmentStatus IN ( '2')
+AND a.FSaleOrderId IS  NULL)
+
+
+
+
+    </select>
+
+    <select id="selectAppointmentOrderById" parameterType="String" resultMap="AppointmentOrderResult">
+        <include refid="selectAppointmentOrderVo"/>
+        where a.FId = #{fId}
+        limit 1
+    </select>
+
+    <select id="selectAppointmentAttachmentOrderById" parameterType="String" resultMap="AppointmentOrderResult">
+        <include refid="selectAppointmentOrderVo2"/>
+        where a.FId = #{fId}
+
+    </select>
+
+    <insert id="insertAppointmentOrder" parameterType="AppointmentOrder">
+        insert into appointment_order
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fId != null  and fId != ''  ">FId,</if>
+			<if test="fOrderNum != null  and fOrderNum != ''  ">FOrderNum,</if>
+			<if test="fProductId != null  and fProductId != ''  ">FProductId,</if>
+			<if test="fProName != null  and fProName != ''  ">FProName,</if>
+			<if test="fProMark != null  and fProMark != ''  ">FProMark,</if>
+			<if test="fManufacturer != null  and fManufacturer != ''  ">FManufacturer,</if>
+			<if test="fPrice != null  ">FPrice,</if>
+			<if test="fQuantity != null  ">FQuantity,</if>
+			<if test="fAppointmentStatus != null  and fAppointmentStatus != ''  ">FAppointmentStatus,</if>
+			<if test="fTime != null  ">FTime,</if>
+            <if test="fCreator != null ">FCreator,</if>
+            <if test="fBond != null "> FBond,</if>
+			<if test="fStatus != null  and fStatus != ''  ">FStatus,</if>
+			<if test="fUpdateTime != null  ">FUpdateTime,</if>
+			<if test="fIsDelete != null  and fIsDelete != ''  ">FIsDelete,</if>
+            <if test="fAuditStatus != null  and fAuditStatus != ''  ">FAuditStatus,</if>
+            <if test="fDeliveryFTime != null  and fDeliveryFTime != ''  ">FDeliveryFTime,</if>
+            <if test="fSaleOrderId != null  and fSaleOrderId != ''  ">FSaleOrderId,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fId != null  and fId != ''  ">#{fId},</if>
+			<if test="fOrderNum != null  and fOrderNum != ''  ">#{fOrderNum},</if>
+			<if test="fProductId != null  and fProductId != ''  ">#{fProductId},</if>
+			<if test="fProName != null  and fProName != ''  ">#{fProName},</if>
+			<if test="fProMark != null  and fProMark != ''  ">#{fProMark},</if>
+			<if test="fManufacturer != null  and fManufacturer != ''  ">#{fManufacturer},</if>
+			<if test="fPrice != null  ">#{fPrice},</if>
+			<if test="fQuantity != null  ">#{fQuantity},</if>
+			<if test="fAppointmentStatus != null  and fAppointmentStatus != ''  ">#{fAppointmentStatus},</if>
+			<if test="fTime != null  ">#{fTime},</if>
+            <if test="fCreator != null ">#{fCreator},</if>
+            <if test="fBond != null "> #{fBond},</if>
+			<if test="fStatus != null  and fStatus != ''  ">#{fStatus},</if>
+			<if test="fUpdateTime != null  ">#{fUpdateTime},</if>
+			<if test="fIsDelete != null  and fIsDelete != ''  ">#{fIsDelete},</if>
+            <if test="fAuditStatus != null  and fAuditStatus != ''  ">#{fAuditStatus},</if>
+            <if test="fDeliveryFTime != null  and fDeliveryFTime != ''  ">#{fDeliveryFTime},</if>
+            <if test="fSaleOrderId != null  and fSaleOrderId != ''  ">#{fSaleOrderId},</if>
+         </trim>
+    </insert>
+
+
+    <update id="updateAppointmentOrder" parameterType="AppointmentOrder">
+        update appointment_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="fOrderNum != null  and fOrderNum != ''  ">FOrderNum = #{fOrderNum},</if>
+            <if test="fCreator != null  and fCreator != ''  ">FCreator = #{fCreator},</if>
+            <if test="fType != null  and fType != ''  ">FType = #{fType},</if>
+            <if test="fProductId != null  and fProductId != ''  ">FProductId = #{fProductId},</if>
+            <if test="fProName != null  and fProName != ''  ">FProName = #{fProName},</if>
+            <if test="fProMark != null  and fProMark != ''  ">FProMark = #{fProMark},</if>
+            <if test="fManufacturer != null  and fManufacturer != ''  ">FManufacturer = #{fManufacturer},</if>
+            <if test="fPrice != null  ">FPrice = #{fPrice},</if>
+            <if test="fQuantity != null  ">FQuantity = #{fQuantity},</if>
+            <if test="fAppointmentStatus != null  and fAppointmentStatus != ''  ">FAppointmentStatus = #{fAppointmentStatus},</if>
+            <if test="fTime != null  ">FTime = #{fTime},</if>
+            <if test="fBond != null  ">FBond = #{fBond},</if>
+            <if test="fStatus != null  and fStatus != ''  ">FStatus = #{fStatus},</if>
+            <if test="fUpdateTime != null  ">FUpdateTime = #{fUpdateTime},</if>
+            <if test="fIsDelete != null  and fIsDelete != ''  ">FIsDelete = #{fIsDelete},</if>
+            <if test="fAuditStatus != null  and fAuditStatus != ''  ">FAuditStatus = #{fAuditStatus},</if>
+            <if test="fDeliveryFTime != null  and fDeliveryFTime != ''  ">FDeliveryFTime = #{fDeliveryFTime},</if>
+            <if test="fSaleOrderId != null  and fSaleOrderId != ''  ">FSaleOrderId = #{fSaleOrderId},</if>
+        </trim>
+        where FId = #{fId}
+    </update>
+
+	<delete id="deleteAppointmentOrderById" parameterType="String">
+        delete from appointment_order where FId = #{fId}
+    </delete>
+
+    <delete id="deleteAppointmentOrderByIds" parameterType="String">
+        delete from appointment_order where FId in
+        <foreach item="fId" collection="array" open="(" separator="," close=")">
+            #{fId}
+        </foreach>
+    </delete>
+    
+</mapper>
