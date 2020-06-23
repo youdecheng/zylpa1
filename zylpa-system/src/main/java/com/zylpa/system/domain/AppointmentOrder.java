@@ -1,11 +1,9 @@
-package com.zylpa.web.domain;
+package com.zylpa.system.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 public class AppointmentOrder
 {

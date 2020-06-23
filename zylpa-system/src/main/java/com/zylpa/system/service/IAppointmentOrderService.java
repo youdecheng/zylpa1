@@ -1,10 +1,7 @@
-package com.zylpa.web.Service;
+package com.zylpa.system.service;
 
 
-
-import com.zylpa.web.domain.AppointmentOrder;
-
-import java.util.List;
+import com.zylpa.system.domain.AppointmentOrder;
 
 /**
  * 预约订单 服务层
@@ -20,7 +17,7 @@ public interface IAppointmentOrderService
      * @param fId 预约订单ID
      * @return 预约订单信息
      */
-	public AppointmentOrder selectAppointmentOrderById(String fId);
+	AppointmentOrder selectAppointmentOrderById(String fId);
 
 
 		

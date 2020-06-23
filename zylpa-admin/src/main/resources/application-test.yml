@@ -5,7 +5,6 @@ spring:
         password: root
         driver-class-name: com.mysql.jdbc.Driver
 mybatis:
- mybatis:
    # 搜索指定包别名
    typeAliasesPackage: com.zylpa
    # 配置mapper的扫描，找到所有的mapper.xml映射文件

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zylpa.web.mapper.AppointmentOrderMapper">
+<mapper namespace="com.zylpa.system.mapper.AppointmentOrderMapper">
 
-    <resultMap type="com.zylpa.web.domain.AppointmentOrder" id="AppointmentOrderResult">
+    <resultMap type="com.zylpa.system.domain.AppointmentOrder" id="AppointmentOrderResult">
         <result property="fId"    column="FId"    />
         <result property="fOrderNum"    column="FOrderNum"    />
         <result property="fProductId"    column="FProductId"    />
@@ -84,7 +84,7 @@ FROM
 
     </sql>
 	
-    <select id="selectAppointmentOrderList" parameterType="AppointmentOrder" resultMap="AppointmentOrderResult">
+    <select id="selectAppointmentOrderList" parameterType="com.zylpa.system.domain.AppointmentOrder" resultMap="AppointmentOrderResult">
         <include refid="selectAppointmentOrderVo"/>
         <where>  
             <if test="fId != null  and fId != '' "> and a.FId = #{fId}</if>
@@ -110,7 +110,7 @@ FROM
         order by a.fTime desc
     </select>
 
-    <select id="selectAappointmentStayPayList" parameterType="AppointmentOrder" resultMap="AppointmentOrderResult">
+    <select id="selectAappointmentStayPayList" parameterType="com.zylpa.system.domain.AppointmentOrder" resultMap="AppointmentOrderResult">
      SELECT
 	a.FId,
 	a.FOrderNum,
@@ -159,7 +159,7 @@ AND a.FSaleOrderId IS  NULL)
 
     </select>
 
-    <insert id="insertAppointmentOrder" parameterType="AppointmentOrder">
+    <insert id="insertAppointmentOrder" parameterType="com.zylpa.system.domain.AppointmentOrder">
         insert into appointment_order
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="fId != null  and fId != ''  ">FId,</if>
@@ -204,7 +204,7 @@ AND a.FSaleOrderId IS  NULL)
     </insert>
 
 
-    <update id="updateAppointmentOrder" parameterType="AppointmentOrder">
+    <update id="updateAppointmentOrder" parameterType="com.zylpa.system.domain.AppointmentOrder">
         update appointment_order
         <trim prefix="SET" suffixOverrides=",">
             <if test="fOrderNum != null  and fOrderNum != ''  ">FOrderNum = #{fOrderNum},</if>

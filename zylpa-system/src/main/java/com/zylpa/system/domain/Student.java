@@ -1,4 +1,4 @@
-package com.zylpa.web.domain;
+package com.zylpa.system.domain;
 
 
 

@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: zylpa-admin #指定服务名
+  profiles:
+    active: test
   freemarker:
     cache: false  #关闭模板缓存，方便测试
     settings:

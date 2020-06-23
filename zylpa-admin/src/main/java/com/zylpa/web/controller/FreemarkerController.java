@@ -1,8 +1,7 @@
 package com.zylpa.web.controller;
 
 
-
-import com.zylpa.web.domain.Student;
+import com.zylpa.system.domain.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,20 +15,19 @@ import java.util.*;
 public class FreemarkerController {
 
 
-
-   /* @RequestMapping("/banner")
-    public String index_banner(Map<String, Object> map){
-        //使用restTemplate请求轮播图的模型数据
-        ResponseEntity<Map> forEntity = restTemplate.getForEntity("http://localhost:31001/cms/config/getmodel/5a791725dd573c3574ee333f", Map.class);
-        Map body = forEntity.getBody();
-        //设置模型数据
-        map.putAll(body);
-        return "index_banner";
-    }*/
+    /* @RequestMapping("/banner")
+     public String index_banner(Map<String, Object> map){
+         //使用restTemplate请求轮播图的模型数据
+         ResponseEntity<Map> forEntity = restTemplate.getForEntity("http://localhost:31001/cms/config/getmodel/5a791725dd573c3574ee333f", Map.class);
+         Map body = forEntity.getBody();
+         //设置模型数据
+         map.putAll(body);
+         return "index_banner";
+     }*/
     @RequestMapping("/test2")
-    public String freemarker(Map<String, Object> map){
-       //向数据模型放数据
-        map.put("name","最有料");
+    public String freemarker(Map<String, Object> map) {
+        //向数据模型放数据
+        map.put("name", "最有料");
         Student stu1 = new Student();
         stu1.setName("小明");
 
@@ -49,16 +47,16 @@ public class FreemarkerController {
         stus.add(stu1);
         stus.add(stu2);
         //向数据模型放数据
-        map.put("stus",stus);
+        map.put("stus", stus);
         //准备map数据
-        HashMap<String,Student> stuMap = new HashMap<String,Student>();
-        stuMap.put("stu1",stu1);
-        stuMap.put("stu2",stu2);
+        HashMap<String, Student> stuMap = new HashMap<String, Student>();
+        stuMap.put("stu1", stu1);
+        stuMap.put("stu2", stu2);
         //向数据模型放数据
-        map.put("stu1",stu1);
+        map.put("stu1", stu1);
         //向数据模型放数据
-        map.put("stuMap",stuMap);
-        System.out.println( "--->1" );
+        map.put("stuMap", stuMap);
+        System.out.println("--->1");
         //返回模板文件名称*/
         return "test";
     }

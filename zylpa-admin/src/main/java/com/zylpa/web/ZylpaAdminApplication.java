@@ -4,8 +4,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-@MapperScan("com.zylpa.web.mapper")
+@SpringBootApplication(scanBasePackages = "com.zylpa")
+@MapperScan("com.zylpa.system.mapper")
 public class ZylpaAdminApplication {
 
 	public static void main(String[] args) {
