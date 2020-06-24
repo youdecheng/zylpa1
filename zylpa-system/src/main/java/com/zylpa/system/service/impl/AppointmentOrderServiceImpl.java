@@ -2,17 +2,15 @@ package com.zylpa.system.service.impl;
 
 
 import com.zylpa.system.domain.AppointmentOrder;
-import com.zylpa.system.service.IAppointmentOrderService;
-
 import com.zylpa.system.mapper.AppointmentOrderMapper;
+import com.zylpa.system.service.IAppointmentOrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 
-
-@Service
+@Service("appointmentOrderServiceImpl")
 public class AppointmentOrderServiceImpl implements IAppointmentOrderService {
-    @Resource
+    @Autowired
     private AppointmentOrderMapper appointmentOrderMapper;
 
 

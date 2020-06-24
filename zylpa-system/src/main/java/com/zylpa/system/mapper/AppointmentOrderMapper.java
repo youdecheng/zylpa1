@@ -3,6 +3,8 @@ package com.zylpa.system.mapper;
 
 import com.zylpa.system.domain.AppointmentOrder;
 
+import javax.annotation.Resource;
+
 
 /**
  * 预约订单 数据层
@@ -10,7 +12,7 @@ import com.zylpa.system.domain.AppointmentOrder;
  * @author zyl
  * @date 2020-05-25
  */
-
+@Resource
 public interface AppointmentOrderMapper {
     /**
      * 查询预约订单信息

@@ -5,6 +5,7 @@ import com.zylpa.system.domain.AppointmentOrder;
 import com.zylpa.system.domain.Student;
 import com.zylpa.system.service.IAppointmentOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -27,7 +28,7 @@ public class GoodsController {
         AppointmentOrder appointmentOrder = appointmentOrderService.selectAppointmentOrderById("1");      //向数据模型放数据
         map.put("name", "最有料");
         Student stu1 = new Student();
-        stu1.setName(appointmentOrder.getFProName());
+        stu1.setName(appointmentOrder==null?"":appointmentOrder.getFProName());
         stu1.setAge(18);
         stu1.setMondy(1000.86f);
         stu1.setBirthday(new Date());
